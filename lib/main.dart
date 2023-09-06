@@ -25,9 +25,7 @@ class MyApp extends StatelessWidget {
         ),
         home:  child,
       ),
-      child:  Scaffold(
-          appBar: AppBar(leading: Icon(Icons.arrow_back),backgroundColor: Colors.purpleAccent,),
-          body: CategoriesScreen()),
+      child:  const CategoriesScreen()
     );
   }
 }
