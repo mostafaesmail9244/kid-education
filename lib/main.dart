@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kid_education/view/screens/categories_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp( MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -11,13 +12,22 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+    return ScreenUtilInit(
+      designSize: const Size(375, 811),
+      minTextAdapt: true,
+      splitScreenMode: true,
+     builder: (context, child) => MaterialApp(
+        title: 'Kid Education',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home:  child,
       ),
-      home:  const CategoriesScreen(),
+      child:  Scaffold(
+          appBar: AppBar(leading: Icon(Icons.arrow_back),backgroundColor: Colors.purpleAccent,),
+          body: CategoriesScreen()),
     );
   }
 }
