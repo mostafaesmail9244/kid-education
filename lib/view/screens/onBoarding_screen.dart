@@ -14,7 +14,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   @override
   Widget build(BuildContext context) {
     return primaryScaffold(
-      body: OnBoardingWidget(),
+      body: const OnBoardingWidget(),
     );
   }
 }

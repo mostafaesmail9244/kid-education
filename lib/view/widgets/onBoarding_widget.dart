@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:kid_education/view/screens/welcome_screen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../shared/components/components.dart';
 import '../../shared/constants.dart';
 import '../../shared/network/local/cache_helper.dart';
-import '../screens/login_screen.dart';
 
 class OnBoardingWidget extends StatefulWidget {
    const OnBoardingWidget({super.key});
@@ -46,7 +46,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
       if (value) {
         navigateAndFinish(
           context,
-          const LoginScreen(),
+          const WelcomeScreen(),
         );
       }
     });
@@ -180,6 +180,8 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
     ),
   );
 }
+
+
 class BoardingModel {
   final String title;
   final String body;

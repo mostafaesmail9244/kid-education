@@ -8,13 +8,13 @@ class CategoriesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return  primaryScaffold(
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             customText(title: 'Categories'),
-            CategoriesWidget(title: 'Games', image: 'assets/images/games.png')
+            const CategoriesWidget(title: 'Games', image: 'assets/images/games.png')
           ],
         ),
       ),

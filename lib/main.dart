@@ -1,13 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:kid_education/view/screens/welcome_screen.dart';
+import 'package:kid_education/shared/network/local/cache_helper.dart';
+import 'package:kid_education/view/screens/login_screen.dart';
+import 'package:kid_education/view/screens/onBoarding_screen.dart';
 
-void main() {
-  runApp( const MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await CacheHelper.init();
+
+  var onBoarding = CacheHelper.getData(key: 'onBoarding');
+
+  Widget widget;
+  if (onBoarding != null) {
+      widget = const LoginScreen();
+  } else {
+    widget = OnBoardingScreen();
+  }
+
+  runApp(  MyApp(startWidget: widget));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+ final Widget startWidget;
+   const MyApp({super.key,required this.startWidget});
 
   // This widget is the root of your application.
   @override
@@ -25,7 +40,7 @@ class MyApp extends StatelessWidget {
         ),
         home:  child,
       ),
-      child:  const WelcomeScreen()
+      child:  startWidget,
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kid_education/view/screens/login_screen.dart';
 
 import '../../shared/components/components.dart';
 import '../../shared/constants.dart';
@@ -66,7 +67,9 @@ class WelcomeWidget extends StatelessWidget {
               height: 15,
             ),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                navigateAndFinish(context, const LoginScreen(),);
+              },
               child:  Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
