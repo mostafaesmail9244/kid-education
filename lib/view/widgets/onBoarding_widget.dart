@@ -7,7 +7,7 @@ import '../../shared/network/local/cache_helper.dart';
 import '../screens/login_screen.dart';
 
 class OnBoardingWidget extends StatefulWidget {
-   OnBoardingWidget({super.key});
+   const OnBoardingWidget({super.key});
 
   @override
   State<OnBoardingWidget> createState() => _OnBoardingWidgetState();
@@ -62,7 +62,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
           Expanded(
             child: PageView.builder(
               itemBuilder: (context, index) => buildBoardItem(board[index]),
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               itemCount: board.length,
               onPageChanged: (index) {
                 if (index == (board.length) - 1) {
@@ -106,7 +106,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                 submit();
               } else {
                 boardController.nextPage(
-                  duration: Duration(milliseconds: 750),
+                  duration: const Duration(milliseconds: 750),
                   curve: Curves.fastOutSlowIn,
                 );
               }
@@ -149,7 +149,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
               clipBehavior: Clip.antiAliasWithSaveLayer,
               child: Image(
                 image: AssetImage(
-                  '${model.image}',
+                  model.image,
                 ),
                 fit: BoxFit.cover,
                 height: 300.0,
@@ -161,14 +161,14 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
             height: 30.0,
           ),
           customText(
-            title: '${model.title}',
+            title: model.title,
             fontSize: 23,
           ),
           const SizedBox(
             height: 15.0,
           ),
           customText(
-            title: '${model.body}',
+            title: model.body,
             fontSize: 18,
             fontWeight: FontWeight.w400,
           ),
