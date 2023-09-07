@@ -1,27 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:kid_education/shared/constants.dart';
 
 Widget defaultButton({
-  double width = double.infinity,
-  Color background = Colors.blue,
+  double width = 380,
+  double height = 48,
+  Color background = defaultColor,
   bool isUpperCase = true,
-  double radius = 0.0,
+  double radius = 8,
   required Function() function,
   required String text,
+  Color? textColor = Colors.white,
 }) {
   return Container(
     width: width,
-    height: 40.0,
+    height: height,
     decoration: BoxDecoration(
       color: background,
+      border: Border.all(color: defaultColor),
       borderRadius: BorderRadius.circular(radius),
     ),
     child: MaterialButton(
       onPressed: function,
       child: Text(
         isUpperCase ? text.toUpperCase() : text,
-        style: TextStyle(
-          color: Colors.white,
+        style:  TextStyle(
+          color: textColor,
+          fontSize: 15,
+          fontWeight: FontWeight.w600,
         ),
       ),
     ),
@@ -84,18 +89,19 @@ Widget customText({
   return Center(
     child: Text(
       title,
-      style: GoogleFonts.abyssinicaSil(
+      style: TextStyle(
+        fontFamily: 'Grandstander',
         color: textColor,
         fontSize: fontSize,
         fontWeight: fontWeight,
-      ),
+      )
     ),
   );
 }
 
 Widget primaryScaffold({backgroundColor = Colors.transparent,body,appBar,bottomNavigationBar}) =>
     Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         gradient: LinearGradient(
           begin: AlignmentDirectional.topStart,
           end: AlignmentDirectional.bottomCenter,
