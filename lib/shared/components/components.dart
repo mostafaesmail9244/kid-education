@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-Widget defaultButton(
-    {
-      double width = double.infinity,
-      Color background = Colors.blue,
-      bool isUpperCase = true,
-      double radius = 0.0,
-      required Function() function,
-      required String text,
-    }
-    ){
 
+Widget defaultButton({
+  double width = double.infinity,
+  Color background = Colors.blue,
+  bool isUpperCase = true,
+  double radius = 0.0,
+  required Function() function,
+  required String text,
+}) {
   return Container(
     width: width,
     height: 40.0,
@@ -20,14 +18,15 @@ Widget defaultButton(
     ),
     child: MaterialButton(
       onPressed: function,
-      child: Text(isUpperCase?text.toUpperCase():text,style: TextStyle(
-        color: Colors.white,
-
-      ),),
+      child: Text(
+        isUpperCase ? text.toUpperCase() : text,
+        style: TextStyle(
+          color: Colors.white,
+        ),
+      ),
     ),
   );
 }
-
 
 Widget defaultFormField({
   required TextEditingController controller,
@@ -43,12 +42,9 @@ Widget defaultFormField({
   VoidCallback? suffixPressed,
   bool? isClickable = true,
   int? lines,
-
-
-
-}){
+}) {
   return TextFormField(
-    controller:controller ,
+    controller: controller,
     keyboardType: keyboardType,
     obscureText: isPassword,
     enabled: isClickable,
@@ -60,28 +56,59 @@ Widget defaultFormField({
     decoration: InputDecoration(
         labelText: label,
         prefixIcon: Icon(prefixIconData),
-        suffixIcon: suffixIconData !=null?IconButton(onPressed: suffixPressed, icon: Icon(
-            suffixIconData
-        )):null,
-        border: const OutlineInputBorder()
+        suffixIcon: suffixIconData != null
+            ? IconButton(onPressed: suffixPressed, icon: Icon(suffixIconData))
+            : null,
+        border: const OutlineInputBorder()),
+  );
+}
+
+void navigateTo(context, widget) =>
+    Navigator.push(context, MaterialPageRoute(builder: (context) => widget));
+
+Future<void> navigateAndFinish(context, widget) {
+  return Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(
+        builder: (context) => widget,
+      ),
+      (route) => false);
+}
+
+Widget customText({
+  required String title,
+  double fontSize = 32.0,
+  FontWeight fontWeight = FontWeight.w700,
+  Color textColor = Colors.black,
+}) {
+  return Center(
+    child: Text(
+      title,
+      style: GoogleFonts.abyssinicaSil(
+        color: textColor,
+        fontSize: fontSize,
+        fontWeight: fontWeight,
+      ),
     ),
   );
 }
-void navigateTo(context, widget)=>
-    Navigator.push(context, MaterialPageRoute(builder: (context)=>widget));
-Future<void> navigateAndFinish(context,widget){
-  return Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => widget,), (route) => false);
-}
 
-Widget customText ({required String title,
-  double fontSize = 32.0,
-  FontWeight fontWeight = FontWeight.w700,
-  Color textColor =Colors.black,}){
-  return Center(
-    child: Text(title,style: GoogleFonts.abyssinicaSil(
-      color: textColor,
-      fontSize: fontSize,
-      fontWeight: fontWeight,
-    ),),
-  );
-}
+Widget primaryScaffold({backgroundColor = Colors.transparent,body,appBar,bottomNavigationBar}) =>
+    Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: AlignmentDirectional.topStart,
+          end: AlignmentDirectional.bottomCenter,
+          colors: [
+            Color(0xFFFFE3F4),
+            Color(0xFFFFFFFF),
+          ],
+        ),
+      ),
+      child: Scaffold(
+        backgroundColor: backgroundColor,
+        appBar: appBar,
+        body: body,
+        bottomNavigationBar: bottomNavigationBar,
+      ),
+    );
