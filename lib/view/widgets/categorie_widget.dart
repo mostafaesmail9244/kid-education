@@ -5,7 +5,7 @@ import 'package:kid_education/shared/constants.dart';
 
 
 class CategoriesWidget extends StatelessWidget {
-   CategoriesWidget({Key? key,required this.title,required this.image}) : super(key: key);
+   const CategoriesWidget({Key? key,required this.title,required this.image}) : super(key: key);
    final String title;
    final String image;
   @override
