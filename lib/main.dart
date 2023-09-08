@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kid_education/shared/network/local/cache_helper.dart';
-import 'package:kid_education/view/screens/login_screen.dart';
 import 'package:kid_education/view/screens/onBoarding_screen.dart';
+import 'package:kid_education/view/screens/welcome_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,10 +13,11 @@ Future<void> main() async {
 
   Widget widget;
   if (onBoarding != null) {
-      widget = const LoginScreen();
+      widget = const WelcomeScreen();
   } else {
     widget = OnBoardingScreen();
   }
+  print(widget);
 
   runApp(  MyApp(startWidget: widget));
 }

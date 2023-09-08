@@ -98,22 +98,25 @@ Widget customText({
     ),
   );
 }
-
-Widget primaryScaffold({backgroundColor = Colors.transparent,body,appBar,bottomNavigationBar}) =>
+PreferredSizeWidget? appBar = AppBar();
+Widget primaryScaffold({backgroundColor = Colors.transparent,body, appBar,bottomNavigationBar}) =>
     Container(
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           begin: AlignmentDirectional.topStart,
           end: AlignmentDirectional.bottomCenter,
           colors: [
-            Color(0xFFFFE3F4),
+            scaffoldMixedColor,
             Color(0xFFFFFFFF),
           ],
         ),
       ),
       child: Scaffold(
         backgroundColor: backgroundColor,
-        appBar: appBar,
+        appBar: AppBar(
+          backgroundColor: scaffoldMixedColor,
+          elevation: 0.0,
+        ),
         body: body,
         bottomNavigationBar: bottomNavigationBar,
       ),

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:kid_education/view/screens/login_screen.dart';
-
+import 'package:kid_education/view/screens/categories_screen.dart';
 import '../../shared/components/components.dart';
 import '../../shared/constants.dart';
+import '../screens/hello_kid_screen.dart';
+import '../screens/parent_registration_screen.dart';
 
 class WelcomeWidget extends StatelessWidget {
   const WelcomeWidget({
@@ -11,85 +12,76 @@ class WelcomeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(30.0),
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            customText(
-              title: 'Welcome',
-              fontSize: 30,
-              fontWeight: FontWeight.w700,
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+
+          customText(
+            title: 'Welcome',
+            fontSize: 35,
+            fontWeight: FontWeight.w700,
+          ),
+
+          //Select Parent (photo and text)
+          selectParentOrKid(context,widget: const ParentRegistrationScreen(),title: 'Parent',image: 'assets/images/welcome_parent.png'),
+
+          //Select Kid (photo and text)
+          selectParentOrKid(context,widget: const HelloKidScreen(),title: 'Kid',image: 'assets/images/welcome_kid.png'),
+
+          const SizedBox(
+            height: 8,
+          ),
+
+          //Skip Button
+          InkWell(
+            onTap: () {
+              navigateTo(context, const CategoriesScreen(),);
+            },
+            child:  Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                customText(
+                  title: 'Skip',
+                  fontSize: 20,
+                  fontWeight: FontWeight.w400,
+                  textColor: const Color(0xFF8B8B8B),
+                ),
+                const Icon(
+                  Icons.arrow_forward_ios_rounded,
+                  color: Color(0xFF8B8B8B),
+                  size: 25,
+                ),
+              ],
             ),
-            InkWell(
-              onTap: () {},
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10.0),
-                    child: Image.asset(
-                      'assets/images/welcome_parent.png',
-                      height: 200,
-                      width: 200,
-                    ),
-                  ),
-                  customText(
-                    title: 'Parent',
-                    fontSize: 25,
-                    fontWeight: FontWeight.w700,
-                    textColor: primaryColor,
-                  ),
-                ],
-              ),
-            ),
-            InkWell(
-              onTap: () {},
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10.0),
-                    child: Image.asset(
-                      'assets/images/welcome_kid.png',
-                      height: 200,
-                      width: 200,
-                    ),
-                  ),
-                  customText(
-                    title: 'Kid',
-                    fontSize: 25,
-                    fontWeight: FontWeight.w700,
-                    textColor: primaryColor,
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            InkWell(
-              onTap: () {
-                navigateAndFinish(context, const LoginScreen(),);
-              },
-              child:  Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  customText(
-                    title: 'Skip',
-                    fontSize: 20,
-                    fontWeight: FontWeight.w400,
-                    textColor: const Color(0xFF8B8B8B),
-                  ),
-                  const Icon(
-                    Icons.arrow_forward_ios_rounded,
-                    color: Color(0xFF8B8B8B),
-                    size: 25,
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
+  }
+
+  InkWell selectParentOrKid(BuildContext context, {widget, image, title}) {
+    return InkWell(
+            onTap: () {
+              navigateTo(context,  widget,);
+            },
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10.0),
+                  child: Image.asset(
+                    image,
+                    height: 200,
+                    width: 200,
+                  ),
+                ),
+                customText(
+                  title: title,
+                  fontSize: 25,
+                  fontWeight: FontWeight.w700,
+                  textColor: primaryColor,
+                ),
+              ],
+            ),
+          );
   }
 }

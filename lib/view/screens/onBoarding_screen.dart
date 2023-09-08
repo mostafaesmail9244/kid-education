@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kid_education/view/widgets/onBoarding_widget.dart';
 
-import '../../shared/components/components.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   @override
@@ -13,8 +12,21 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return primaryScaffold(
-      body: const OnBoardingWidget(),
+    return Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: AlignmentDirectional.topStart,
+          end: AlignmentDirectional.bottomCenter,
+          colors: [
+            Color(0xFFFFE3F4),
+            Color(0xFFFFFFFF),
+          ],
+        ),
+      ),
+      child: const Scaffold(
+        backgroundColor: Colors.transparent,
+        body: OnBoardingWidget(),
+      ),
     );
   }
 }

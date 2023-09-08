@@ -55,68 +55,33 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(30.0),
+      padding: const EdgeInsets.only(top: 35.0,right: 30,left: 30,bottom: 10,),
       child: Column(
         children: [
           //Board
-          Expanded(
-            child: PageView.builder(
-              itemBuilder: (context, index) => buildBoardItem(board[index]),
-              physics: const BouncingScrollPhysics(),
-              itemCount: board.length,
-              onPageChanged: (index) {
-                if (index == (board.length) - 1) {
-                  setState(() {
-                    isLast = true;
-                  });
+          pageViewBuilder(),
+          smoothPageIndicator(),
+
+          //Next Button with vertical padding 10
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10.0),
+            child: defaultButton(
+              function: () {
+                if (isLast == true) {
+                  submit();
                 } else {
-                  setState(() {
-                    isLast = false;
-                  });
+                  boardController.nextPage(
+                    duration: const Duration(milliseconds: 750),
+                    curve: Curves.fastOutSlowIn,
+                  );
                 }
               },
-              controller: boardController,
+              text: 'next',
+              isUpperCase: true,
             ),
           ),
-          Center(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SmoothPageIndicator(
-                  controller: boardController,
-                  count: board.length,
-                  effect:  const JumpingDotEffect(
-                    dotColor: Colors.grey,
-                    activeDotColor: defaultColor,
-                    dotHeight: 9.0,
-                    spacing: 5.0,
-                    dotWidth: 9.0,
-                    paintStyle: PaintingStyle.fill,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(
-            height: 15,
-          ),
-          defaultButton(
-            function: () {
-              if (isLast == true) {
-                submit();
-              } else {
-                boardController.nextPage(
-                  duration: const Duration(milliseconds: 750),
-                  curve: Curves.fastOutSlowIn,
-                );
-              }
-            },
-            text: 'next',
-            isUpperCase: true,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
+
+          //Skip Button
           defaultButton(
             function: () {
               submit();
@@ -129,6 +94,50 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
         ],
       ),
     );
+  }
+
+  Center smoothPageIndicator() {
+    return Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SmoothPageIndicator(
+                controller: boardController,
+                count: board.length,
+                effect:  const JumpingDotEffect(
+                  dotColor: Colors.grey,
+                  activeDotColor: defaultColor,
+                  dotHeight: 9.0,
+                  spacing: 5.0,
+                  dotWidth: 9.0,
+                  paintStyle: PaintingStyle.fill,
+                ),
+              ),
+            ],
+          ),
+        );
+  }
+
+  Expanded pageViewBuilder() {
+    return Expanded(
+          child: PageView.builder(
+            itemBuilder: (context, index) => buildBoardItem(board[index]),
+            physics: const BouncingScrollPhysics(),
+            itemCount: board.length,
+            onPageChanged: (index) {
+              if (index == (board.length) - 1) {
+                setState(() {
+                  isLast = true;
+                });
+              } else {
+                setState(() {
+                  isLast = false;
+                });
+              }
+            },
+            controller: boardController,
+          ),
+        );
   }
 
   Widget buildBoardItem(BoardingModel model) => SingleChildScrollView(
@@ -173,7 +182,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
             fontWeight: FontWeight.w400,
           ),
           const SizedBox(
-            height: 15.0,
+            height: 5.0,
           ),
         ],
       ),

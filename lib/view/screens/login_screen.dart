@@ -6,6 +6,9 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return primaryScaffold();
+    return primaryScaffold(
+      appBar: AppBar(),
+
+    );
   }
 }

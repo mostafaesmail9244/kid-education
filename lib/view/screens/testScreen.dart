@@ -8,7 +8,11 @@ class Test extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return primaryScaffold(
-      body: Center(
+        appBar: AppBar(
+          backgroundColor:   Color(0xFFFFE3F4),
+          elevation: 0,
+        ),
+        body: Center(
         child:  Column(
           children: [
             Image.asset('assets/images/games.png'),
