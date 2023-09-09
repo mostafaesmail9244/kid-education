@@ -13,10 +13,16 @@ class CategoriesWidget extends StatelessWidget {
     return Column(
       children: [
         Card(
-          child: Image.asset(image,),
+          margin: const EdgeInsets.symmetric(horizontal: 20.0,),
+          color: Colors.white,
+          elevation: 0.0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(164.0),
+          ),
+          child: Image.asset(image,fit: BoxFit.contain,height: 260,width: 260.0,),
         ),
-        SizedBox(height: 16.0.h,),
-        customText(title: title,textColor: primaryColor,fontSize: 32.0.sp),
+        customText(title: title,textColor: primaryColor,fontSize: 28.0.sp),
+        SizedBox(height: 24.0.h,)
       ],
     );
   }

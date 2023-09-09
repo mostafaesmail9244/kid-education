@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kid_education/view/screens/categories_screen.dart';
+import 'package:kid_education/view/screens/layout_screen.dart';
 import '../../shared/components/components.dart';
 import '../../shared/constants.dart';
 import '../screens/hello_kid_screen.dart';
@@ -35,7 +36,7 @@ class WelcomeWidget extends StatelessWidget {
           //Skip Button
           InkWell(
             onTap: () {
-              navigateTo(context, const CategoriesScreen(),);
+              navigateTo(context, const LayoutScreen(),);
             },
             child:  Row(
               mainAxisAlignment: MainAxisAlignment.end,

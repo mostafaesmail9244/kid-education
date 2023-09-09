@@ -8,7 +8,6 @@ import 'package:kid_education/view/screens/welcome_screen.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await CacheHelper.init();
-
   var onBoarding = CacheHelper.getData(key: 'onBoarding');
 
   Widget widget;
@@ -19,7 +18,11 @@ Future<void> main() async {
   }
   print(widget);
 
-  runApp(  MyApp(startWidget: widget));
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]).then((value) => runApp(MyApp(startWidget: widget)));
+
 }
 
 class MyApp extends StatelessWidget {
@@ -38,7 +41,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
+
         ),
         home:  child,
       ),
