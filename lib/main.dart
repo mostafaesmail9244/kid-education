@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kid_education/shared/constants.dart';
 import 'package:kid_education/shared/network/local/cache_helper.dart';
-import 'package:kid_education/view/screens/edit_profile_screen.dart';
 import 'package:kid_education/view/screens/onBoarding_screen.dart';
 import 'package:kid_education/view/screens/welcome_screen.dart';
 
@@ -42,11 +41,11 @@ class MyApp extends StatelessWidget {
         title: 'Kid Education',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: defaultColor),
+          colorScheme: ColorScheme.fromSeed(seedColor: scaffoldMixedColor),
         ),
         home:  child,
       ),
-      child:   EditProfileScreen(),
+      child:   startWidget,
     );
   }
 }
