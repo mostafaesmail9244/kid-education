@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:kid_education/shared/constants.dart';
 
 Widget defaultButton({
@@ -7,6 +8,8 @@ Widget defaultButton({
   Color background = defaultColor,
   bool isUpperCase = true,
   double radius = 8,
+  fontSize = 15,
+  fontWeight = FontWeight.w600,
   required Function() function,
   required String text,
   Color? textColor = Colors.white,
@@ -25,8 +28,38 @@ Widget defaultButton({
         isUpperCase ? text.toUpperCase() : text,
         style:  TextStyle(
           color: textColor,
-          fontSize: 15,
-          fontWeight: FontWeight.w600,
+          fontSize: fontSize,
+          fontWeight:fontWeight,
+        ),
+      ),
+    ),
+  );
+}
+
+Widget playButton({
+  bool isUpperCase = true,
+  required Function() function,
+  required String text,
+}) {
+  return Container(
+    width: 185,
+    height: 48,
+    decoration: BoxDecoration(
+      color: defaultColor,
+      border: Border.all(color: defaultColor),
+      borderRadius: BorderRadius.circular(8),
+    ),
+    child: MaterialButton(
+      onPressed: function,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 53,),
+        child: Text(
+          isUpperCase ? text.toUpperCase() : text,
+          style:  GoogleFonts.almarai(
+            color: Colors.white,
+            fontSize: 20,
+            fontWeight: FontWeight.w700,
+          ),
         ),
       ),
     ),
@@ -89,12 +122,11 @@ Widget customText({
   return Center(
     child: Text(
       title,
-      style: TextStyle(
-        fontFamily: 'Grandstander',
+      style: GoogleFonts.almarai(
         color: textColor,
         fontSize: fontSize,
         fontWeight: fontWeight,
-      )
+      ),
     ),
   );
 }
@@ -116,6 +148,7 @@ Widget primaryScaffold({backgroundColor = Colors.transparent,body, appBar,bottom
         appBar: AppBar(
           backgroundColor: scaffoldMixedColor,
           elevation: 0.0,
+          leading: IconButton(onPressed: (){}, icon: const Icon(Icons.arrow_back_ios_sharp,color: Colors.black,),),
         ),
         body: body,
         bottomNavigationBar: bottomNavigationBar,

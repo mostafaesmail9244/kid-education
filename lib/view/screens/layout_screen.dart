@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:iconly/iconly.dart';
 import 'package:kid_education/view/screens/categories_screen.dart';
-import 'package:kid_education/view/screens/games_screen.dart';
-import 'package:kid_education/view/screens/math_game2_screen.dart';
+
+import 'package:kid_education/view/screens/profile_screen.dart';
+import 'package:kid_education/view/screens/settings_screen.dart';
 import '../../shared/components/components.dart';
 
 class LayoutScreen extends StatefulWidget {
@@ -21,9 +22,9 @@ class _LayoutScreenState extends State<LayoutScreen> {
     IconlyLight.setting
   ];
   List<Widget> screens = [
-    const GamesScreen(),
+    const ProfileScreen(),
     const CategoriesScreen(),
-    const CategoriesScreen(),
+    const SettingsScreen(),
   ];
 
   @override
