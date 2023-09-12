@@ -15,7 +15,7 @@ class LayoutScreen extends StatefulWidget {
 }
 
 class _LayoutScreenState extends State<LayoutScreen> {
-  int currentIndex = 2;
+  int currentIndex = 0;
   List<IconData> listOfIcons = [
     IconlyLight.profile,
     IconlyLight.home,
