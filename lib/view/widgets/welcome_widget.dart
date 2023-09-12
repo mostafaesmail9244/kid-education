@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:kid_education/view/screens/categories_screen.dart';
 import 'package:kid_education/view/screens/layout_screen.dart';
 import '../../shared/components/components.dart';
 import '../../shared/constants.dart';

@@ -37,7 +37,7 @@ Widget defaultButton({
 }
 
 Widget playButton({
-  bool isUpperCase = true,
+  bool isUpperCase = false,
   required Function() function,
   required String text,
 }) {
@@ -52,13 +52,13 @@ Widget playButton({
     child: MaterialButton(
       onPressed: function,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 53,),
+        padding: const EdgeInsets.symmetric(vertical: 8.0),
         child: Text(
           isUpperCase ? text.toUpperCase() : text,
           style:  GoogleFonts.almarai(
             color: Colors.white,
             fontSize: 20,
-            fontWeight: FontWeight.w700,
+            fontWeight: FontWeight.w600,
           ),
         ),
       ),
@@ -75,29 +75,39 @@ Widget defaultFormField({
   bool isPassword = false,
   required FormFieldValidator<String>? validate,
   required String label,
-  required IconData prefixIconData,
+   IconData? prefixIconData,
   IconData? suffixIconData,
   VoidCallback? suffixPressed,
   bool? isClickable = true,
   int? lines,
+  double width = 185,
+  double height = 58,
+
 }) {
-  return TextFormField(
-    controller: controller,
-    keyboardType: keyboardType,
-    obscureText: isPassword,
-    enabled: isClickable,
-    onFieldSubmitted: onSubmitted,
-    onChanged: onChange,
-    onTap: onTap,
-    maxLines: lines,
-    validator: validate,
-    decoration: InputDecoration(
-        labelText: label,
-        prefixIcon: Icon(prefixIconData),
-        suffixIcon: suffixIconData != null
-            ? IconButton(onPressed: suffixPressed, icon: Icon(suffixIconData))
-            : null,
-        border: const OutlineInputBorder()),
+  return SizedBox(
+    height: height,
+    width: width,
+    child: TextFormField(
+      controller: controller,
+      keyboardType: keyboardType,
+      obscureText: isPassword,
+      enabled: isClickable,
+      onFieldSubmitted: onSubmitted,
+      onChanged: onChange,
+      onTap: onTap,
+      maxLines: lines,
+      validator: validate,
+
+      decoration: InputDecoration(
+          labelText: label,
+          prefixIcon: prefixIconData != null ?Icon(prefixIconData):null ,
+          suffixIcon: suffixIconData != null
+              ? IconButton(onPressed: suffixPressed, icon: Icon(suffixIconData))
+              : null,
+          border: const OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(8),),
+          )),
+    ),
   );
 }
 
@@ -148,7 +158,6 @@ Widget primaryScaffold({backgroundColor = Colors.transparent,body, appBar,bottom
         appBar: AppBar(
           backgroundColor: scaffoldMixedColor,
           elevation: 0.0,
-          leading: IconButton(onPressed: (){}, icon: const Icon(Icons.arrow_back_ios_sharp,color: Colors.black,),),
         ),
         body: body,
         bottomNavigationBar: bottomNavigationBar,
