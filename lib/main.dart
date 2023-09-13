@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:kid_education/shared/constants.dart';
+import 'package:kid_education/core/color.dart';
 import 'package:kid_education/shared/network/local/cache_helper.dart';
 import 'package:kid_education/view/screens/onBoarding_screen.dart';
 import 'package:kid_education/view/screens/welcome_screen.dart';
@@ -13,7 +13,7 @@ Future<void> main() async {
 
   Widget widget;
   if (onBoarding != null) {
-      widget = const WelcomeScreen();
+    widget = const WelcomeScreen();
   } else {
     widget = OnBoardingScreen();
   }
@@ -23,12 +23,11 @@ Future<void> main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]).then((value) => runApp(MyApp(startWidget: widget)));
-
 }
 
 class MyApp extends StatelessWidget {
- final Widget startWidget;
-   const MyApp({super.key,required this.startWidget});
+  final Widget startWidget;
+  const MyApp({super.key, required this.startWidget});
 
   // This widget is the root of your application.
   @override
@@ -37,15 +36,15 @@ class MyApp extends StatelessWidget {
       designSize: const Size(375, 811),
       minTextAdapt: true,
       splitScreenMode: true,
-     builder: (context, child) => MaterialApp(
+      builder: (context, child) => MaterialApp(
         title: 'Kid Education',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: scaffoldMixedColor),
         ),
-        home:  child,
+        home: child,
       ),
-      child:   startWidget,
+      child: startWidget,
     );
   }
 }

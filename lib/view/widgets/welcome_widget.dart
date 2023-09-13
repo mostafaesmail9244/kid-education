@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kid_education/view/screens/layout_screen.dart';
 import '../../shared/components/components.dart';
-import '../../shared/constants.dart';
+import '../../core/color.dart';
 import '../screens/hello_kid_screen.dart';
 import '../screens/parent_registration_screen.dart';
 
@@ -15,7 +15,6 @@ class WelcomeWidget extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-
           customText(
             title: 'Welcome',
             fontSize: 35,
@@ -23,10 +22,16 @@ class WelcomeWidget extends StatelessWidget {
           ),
 
           //Select Parent (photo and text)
-          selectParentOrKid(context,widget: const ParentRegistrationScreen(),title: 'Parent',image: 'assets/images/welcome_parent.png'),
+          selectParentOrKid(context,
+              widget: const ParentRegistrationScreen(),
+              title: 'Parent',
+              image: 'assets/images/welcome_parent.png'),
 
           //Select Kid (photo and text)
-          selectParentOrKid(context,widget: const HelloKidScreen(),title: 'Kid',image: 'assets/images/welcome_kid.png'),
+          selectParentOrKid(context,
+              widget: const HelloKidScreen(),
+              title: 'Kid',
+              image: 'assets/images/welcome_kid.png'),
 
           const SizedBox(
             height: 8,
@@ -35,9 +40,12 @@ class WelcomeWidget extends StatelessWidget {
           //Skip Button
           InkWell(
             onTap: () {
-              navigateTo(context, const LayoutScreen(),);
+              navigateTo(
+                context,
+                const LayoutScreen(),
+              );
             },
-            child:  Row(
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 customText(
@@ -61,27 +69,30 @@ class WelcomeWidget extends StatelessWidget {
 
   InkWell selectParentOrKid(BuildContext context, {widget, image, title}) {
     return InkWell(
-            onTap: () {
-              navigateTo(context,  widget,);
-            },
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10.0),
-                  child: Image.asset(
-                    image,
-                    height: 200,
-                    width: 200,
-                  ),
-                ),
-                customText(
-                  title: title,
-                  fontSize: 25,
-                  fontWeight: FontWeight.w700,
-                  textColor: primaryColor,
-                ),
-              ],
+      onTap: () {
+        navigateTo(
+          context,
+          widget,
+        );
+      },
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10.0),
+            child: Image.asset(
+              image,
+              height: 200,
+              width: 200,
             ),
-          );
+          ),
+          customText(
+            title: title,
+            fontSize: 25,
+            fontWeight: FontWeight.w700,
+            textColor: primaryColor,
+          ),
+        ],
+      ),
+    );
   }
 }

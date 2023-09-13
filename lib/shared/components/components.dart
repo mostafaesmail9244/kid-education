@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:kid_education/shared/constants.dart';
+import 'package:kid_education/core/color.dart';
 
 Widget defaultButton({
   double width = 380,
@@ -8,7 +8,7 @@ Widget defaultButton({
   Color background = defaultColor,
   bool isUpperCase = true,
   double radius = 8,
-  fontSize = 15,
+  double fontSize = 15,
   fontWeight = FontWeight.w600,
   required Function() function,
   required String text,
@@ -26,10 +26,10 @@ Widget defaultButton({
       onPressed: function,
       child: Text(
         isUpperCase ? text.toUpperCase() : text,
-        style:  TextStyle(
+        style: TextStyle(
           color: textColor,
           fontSize: fontSize,
-          fontWeight:fontWeight,
+          fontWeight: fontWeight,
         ),
       ),
     ),
@@ -55,7 +55,7 @@ Widget playButton({
         padding: const EdgeInsets.symmetric(vertical: 8.0),
         child: Text(
           isUpperCase ? text.toUpperCase() : text,
-          style:  GoogleFonts.almarai(
+          style: GoogleFonts.almarai(
             color: Colors.white,
             fontSize: 20,
             fontWeight: FontWeight.w600,
@@ -75,14 +75,13 @@ Widget defaultFormField({
   bool isPassword = false,
   required FormFieldValidator<String>? validate,
   required String label,
-   IconData? prefixIconData,
+  IconData? prefixIconData,
   IconData? suffixIconData,
   VoidCallback? suffixPressed,
   bool? isClickable = true,
   int? lines,
   double width = 185,
   double height = 58,
-
 }) {
   return SizedBox(
     height: height,
@@ -97,15 +96,16 @@ Widget defaultFormField({
       onTap: onTap,
       maxLines: lines,
       validator: validate,
-
       decoration: InputDecoration(
           labelText: label,
-          prefixIcon: prefixIconData != null ?Icon(prefixIconData):null ,
+          prefixIcon: prefixIconData != null ? Icon(prefixIconData) : null,
           suffixIcon: suffixIconData != null
               ? IconButton(onPressed: suffixPressed, icon: Icon(suffixIconData))
               : null,
           border: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(8),),
+            borderRadius: BorderRadius.all(
+              Radius.circular(8),
+            ),
           )),
     ),
   );
@@ -140,8 +140,13 @@ Widget customText({
     ),
   );
 }
+
 PreferredSizeWidget? appBar = AppBar();
-Widget primaryScaffold({backgroundColor = Colors.transparent,body, appBar,bottomNavigationBar}) =>
+Widget primaryScaffold(
+        {backgroundColor = Colors.transparent,
+        body,
+        appBar,
+        bottomNavigationBar}) =>
     Container(
       decoration: const BoxDecoration(
         gradient: LinearGradient(
