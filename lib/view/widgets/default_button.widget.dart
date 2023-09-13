@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:kid_education/core/color.dart';
 
 class DefaultButton extends StatelessWidget {
@@ -12,6 +13,8 @@ class DefaultButton extends StatelessWidget {
   final Function() function;
   final String text;
   final Color? textColor;
+
+
   const DefaultButton({
     super.key,
     this.width = 380,
@@ -19,8 +22,8 @@ class DefaultButton extends StatelessWidget {
     this.background = defaultColor,
     this.isUpperCase = true,
     this.radius = 8,
-    this.fontSize = 15,
-    this.fontWeight = FontWeight.w600,
+    this.fontSize = 20,
+    this.fontWeight = FontWeight.w700,
     required this.function,
     required this.text,
     this.textColor = Colors.white,
@@ -40,7 +43,7 @@ class DefaultButton extends StatelessWidget {
         onPressed: function,
         child: Text(
           isUpperCase ? text.toUpperCase() : text,
-          style: TextStyle(
+          style: GoogleFonts.almarai(
             color: textColor,
             fontSize: fontSize,
             fontWeight: fontWeight,

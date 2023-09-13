@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kid_education/core/color.dart';
 import 'package:kid_education/shared/network/local/cache_helper.dart';
 import 'package:kid_education/view/screens/onBoarding_screen.dart';
+import 'package:kid_education/view/screens/testScreen.dart';
 import 'package:kid_education/view/screens/welcome_screen.dart';
 
 Future<void> main() async {
@@ -17,7 +18,7 @@ Future<void> main() async {
   } else {
     widget = OnBoardingScreen();
   }
-  print(widget);
+  //print(widget);
 
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
@@ -44,7 +45,7 @@ class MyApp extends StatelessWidget {
         ),
         home: child,
       ),
-      child: startWidget,
+      child: Test(),
     );
   }
 }
