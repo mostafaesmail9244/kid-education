@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kid_education/core/color.dart';
 import 'package:kid_education/shared/network/local/cache_helper.dart';
 import 'package:kid_education/view/screens/onBoarding_screen.dart';
-import 'package:kid_education/view/screens/testScreen.dart';
 import 'package:kid_education/view/screens/welcome_screen.dart';
 
 Future<void> main() async {
@@ -45,7 +44,7 @@ class MyApp extends StatelessWidget {
         ),
         home: child,
       ),
-      child: Test(),
+      child: startWidget,
     );
   }
 }
