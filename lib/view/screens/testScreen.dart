@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kid_education/view/widgets/primary_scaffold_widget.dart';
 
 import '../../shared/components/components.dart';
 
@@ -7,18 +8,15 @@ class Test extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return primaryScaffold(
-        appBar: AppBar(
-          backgroundColor:   Color(0xFFFFE3F4),
-          elevation: 0,
-        ),
+    return PrimaryScaffold(
+        appBar: defaultAppBar(context: context,isLeading: true,),
         body: Center(
-        child:  Column(
-          children: [
-            Image.asset('assets/images/games.png'),
-          ],
-        ),
-      )
+          child:  Column(
+            children: [
+              Image.asset('assets/images/games.png'),
+            ],
+          ),
+        )
     );
   }
 }

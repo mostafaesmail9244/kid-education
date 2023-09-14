@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kid_education/core/color.dart';
+import 'package:kid_education/core/helper/get_asset.dart';
 
 Widget defaultButton({
   double width = 380,
@@ -80,7 +81,7 @@ Widget defaultFormField({
   VoidCallback? suffixPressed,
   bool? isClickable = true,
   int? lines,
-  double width = 185,
+  double width = 380,
   double height = 58,
 }) {
   return SizedBox(
@@ -141,30 +142,27 @@ Widget customText({
   );
 }
 
-PreferredSizeWidget? appBar = AppBar();
-Widget primaryScaffold(
-        {backgroundColor = Colors.transparent,
-        body,
-        appBar,
-        bottomNavigationBar}) =>
-    Container(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          begin: AlignmentDirectional.topStart,
-          end: AlignmentDirectional.bottomCenter,
-          colors: [
-            scaffoldMixedColor,
-            Color(0xFFFFFFFF),
-          ],
-        ),
-      ),
-      child: Scaffold(
-        backgroundColor: backgroundColor,
-        appBar: AppBar(
-          backgroundColor: scaffoldMixedColor,
-          elevation: 0.0,
-        ),
-        body: body,
-        bottomNavigationBar: bottomNavigationBar,
-      ),
+PreferredSizeWidget? defaultAppBar({
+  required BuildContext context,
+  String? title,
+  List<Widget>? actions,
+  bool isLeading = true,
+}) =>
+    AppBar(
+      backgroundColor: scaffoldMixedColor,
+      elevation: 0.0,
+      leading: isLeading
+          ? IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: Image.asset(
+                getPngAsset(
+                  'arrowleft2',
+                ),
+                height: 32,
+                width: 32,
+              ))
+          : null,
     );
+

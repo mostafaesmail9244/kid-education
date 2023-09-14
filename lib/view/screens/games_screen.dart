@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:kid_education/view/widgets/primary_scaffold_widget.dart';
 import '../../shared/components/components.dart';
 import '../widgets/categorie_widget.dart';
 
@@ -9,7 +9,8 @@ class GamesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return primaryScaffold(
+    return PrimaryScaffold(
+      appBar: defaultAppBar(context: context,),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -18,7 +19,7 @@ class GamesScreen extends StatelessWidget {
             customText(title: 'Games'),
             SizedBox(height: 24.0.h,),
             InkWell(onTap: (){
-             // navigateTo(context, const GamesScreen());
+              // navigateTo(context, const GamesScreen());
             },
                 child: const CategoriesWidget(title: 'Letters', image: 'assets/images/letters.png', )),
             const CategoriesWidget(title: 'Numbers', image: 'assets/images/numbers.png', ),

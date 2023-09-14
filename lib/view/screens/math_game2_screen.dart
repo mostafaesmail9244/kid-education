@@ -29,7 +29,9 @@ class _MathGame2ScreenState extends State<MathGame2Screen> {
       DeviceOrientation.portraitUp,
     ]);
   }
-TextEditingController fieldController = TextEditingController();
+
+  TextEditingController fieldController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -93,7 +95,8 @@ TextEditingController fieldController = TextEditingController();
                 color: Colors.white,
                 width: 3,
               )),
-          child: TextFormField(controller: fieldController,
+          child: TextFormField(
+            controller: fieldController,
             decoration: const InputDecoration(
                 border: OutlineInputBorder(borderSide: BorderSide.none)),
             keyboardType: TextInputType.number,

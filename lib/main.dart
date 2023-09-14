@@ -17,7 +17,7 @@ Future<void> main() async {
   } else {
     widget = OnBoardingScreen();
   }
-  print(widget);
+  //print(widget);
 
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
