@@ -42,11 +42,20 @@ const space26 = _Space(26);
 /// gap 28*28
 const space28 = _Space(28);
 
+/// gap 32*32
+const space32 = _Space(32);
+
 /// gap 36*36
 const space36 = _Space(36);
 
 /// gap 48*48
 const space48 = _Space(48);
+
+/// gap 50*50
+const space50 = _Space(50);
+
+/// gap 56*56
+const space56 = _Space(56);
 
 const spaceH = SizedBox(width: double.infinity);
 

@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:kid_education/core/constant/radius.core.dart';
+import 'package:kid_education/core/constant/space.core.dart';
 import 'package:kid_education/core/validation.dart';
 import 'package:kid_education/core/color.dart';
 import 'package:kid_education/view/widgets/txt.widget.dart';
@@ -112,10 +113,7 @@ class InputTextFieldState extends State<InputTextField> {
                 const TextStyle(
                     fontWeight: FontWeight.w400, color: black, fontSize: 16),
           ),
-          widget.titleSpace ??
-              const SizedBox(
-                height: 8,
-              ),
+          widget.titleSpace ?? space12,
         ],
         TextFormField(
           key: widget.validationKey,
