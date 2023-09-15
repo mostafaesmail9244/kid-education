@@ -6,12 +6,13 @@ import '../screens/hello_kid_screen.dart';
 import '../screens/parent_registration_screen.dart';
 
 class WelcomeWidget extends StatelessWidget {
-  const WelcomeWidget({
-    super.key,
+  const WelcomeWidget({super.key,
   });
 
+   static bool skip=false;
   @override
   Widget build(BuildContext context) {
+
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -40,6 +41,7 @@ class WelcomeWidget extends StatelessWidget {
           //Skip Button
           InkWell(
             onTap: () {
+              skip=true;
               navigateTo(
                 context,
                 const LayoutScreen(),

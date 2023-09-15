@@ -14,7 +14,8 @@ const Color targetLetterCColor = Color(0xFF86B0D3);
 const Color letterAColor = Color(0xFFD40E0E);
 const Color letterBColor = Color(0xFFffff00);
 const Color letterCColor = Color(0xFF00FFF0);
-const Color greatGobColor = Color(0xFF01DC31);
+const Color greatGobColor = Color(0xFF01DC31);//F00
+const Color tryAgainColor = Color(0xFFF00000);
 
 
 

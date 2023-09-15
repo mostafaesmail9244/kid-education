@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kid_education/shared/components/components.dart';
+import 'package:kid_education/view/screens/games_screen.dart';
 import 'package:kid_education/view/widgets/play_button_widget.dart';
 import 'package:kid_education/view/widgets/primary_scaffold_widget.dart';
 
@@ -13,7 +14,7 @@ class LettersGameScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PrimaryScaffold(
-      appBar: defaultAppBar(context: context,i: true),
+      appBar: defaultAppBar(context: context,i: true,widget: const GamesScreen(),),
       body: Column(
         children: [
           const SizedBox(

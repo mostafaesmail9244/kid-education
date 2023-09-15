@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kid_education/core/color.dart';
+import 'package:kid_education/core/constant/color.dart';
 import 'package:kid_education/core/constant/padding.core.dart';
 import 'package:pinput/pinput.dart';
 

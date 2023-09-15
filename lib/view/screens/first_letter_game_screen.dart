@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kid_education/core/constant/color.dart';
+import 'package:kid_education/core/constant/constants.dart';
 import 'package:kid_education/core/helper/get_asset.dart';
-import 'package:kid_education/shared/components/components.dart';
-import 'package:kid_education/view/screens/categories_screen.dart';
 import 'package:kid_education/view/screens/game_done_screen.dart';
 import 'package:kid_education/view/widgets/primary_scaffold_widget.dart';
+import 'game_fail_screen.dart';
 
 class FirstLettersGameScreen extends StatefulWidget {
   const FirstLettersGameScreen({super.key});
@@ -18,7 +19,7 @@ class _LettersGameScreenState extends State<FirstLettersGameScreen> {
   Color colorA = targetLetterAColor;
   Color colorB = targetLetterBColor;
   Color colorC = targetLetterCColor;
-  int i=0;
+  int i = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -56,10 +57,13 @@ class _LettersGameScreenState extends State<FirstLettersGameScreen> {
               ),
             ),
 
-            DraggableLetters(showDraggableB: showDraggableB, showDraggableC: showDraggableC, showDraggableA: showDraggableA,),
+            DraggableLetters(
+              showDraggableB: showDraggableB,
+              showDraggableC: showDraggableC,
+              showDraggableA: showDraggableA,
+            ),
 
             targetLetters(),
-
           ],
         ),
       ),
@@ -68,83 +72,107 @@ class _LettersGameScreenState extends State<FirstLettersGameScreen> {
 
   Widget targetLetters() {
     return Column(
+      children: [
+        const SizedBox(
+          height: 30,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(
+            left: 240.0,
+          ),
+          child: DragTarget<Color>(
+            onAccept: (data) {
+              setState(() {
+                colorA = data;
+                i++;
+                if (i == 3) {
+                  if (colorA == letterAColor &&
+                      colorB == letterBColor &&
+                      colorC == letterCColor) {
+                    transitionNavigator(widget: const GameDoneScreen());
+                  } else {
+                    transitionNavigator(widget: const GameFailScreen());
+                  }
+                }
+              });
+            },
+            builder: (context, candidateData, rejectedData) => TargetLetterItem(
+              targetLetter: 'A',
+              targetColor: colorA,
+            ),
+          ),
+        ),
+        //Spacer(),
+        Padding(
+          padding: const EdgeInsets.only(left: 275.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const SizedBox(
-                height: 30,
-              ),
               Padding(
-                padding: const EdgeInsets.only(
-                  left: 240.0,
-                ),
+                padding: const EdgeInsets.only(bottom: 50.0),
                 child: DragTarget<Color>(
                   onAccept: (data) {
                     setState(() {
-                      colorA = data;
+                      colorC = data;
                       i++;
-                      if(i==3&&colorA==letterAColor){
-                        navigateTo(context, const GameDoneScreen(),);
+                      if (i == 3) {
+                        if (colorA == letterAColor &&
+                            colorB == letterBColor &&
+                            colorC == letterCColor) {
+                          transitionNavigator(widget: const GameDoneScreen());
+                        } else {
+                          transitionNavigator(widget: const GameFailScreen());
+                        }
                       }
                     });
                   },
                   builder: (context, candidateData, rejectedData) =>
                       TargetLetterItem(
-                    targetLetter: 'A',
-                    targetColor: colorA,
+                    targetLetter: 'C',
+                    targetColor: colorC,
                   ),
                 ),
               ),
-              //Spacer(),
-              Padding(
-                padding: const EdgeInsets.only(left: 275.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 50.0),
-                      child: DragTarget<Color>(
-                        onAccept: (data) {
-                          setState(() {
-                            colorC = data;
-                            i++;
-                            if(i==3&&colorC==letterCColor){
-                              navigateTo(context, const GameDoneScreen(),);
-                            }
-                          });
-                        },
-                        builder: (context, candidateData, rejectedData) =>
-                            TargetLetterItem(
-                          targetLetter: 'C',
-                          targetColor: colorC,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 150,
-                    ),
-                    DragTarget<Color>(
-                      onAccept: (data) {
-                        setState(() {
-                          colorB = data;
-                          i++;
-                          if(i==3&&colorB==letterBColor){
-                            navigateTo(context, const GameDoneScreen(),);
-                          }
-                        });
-                      },
-
-                      builder: (context, candidateData, rejectedData) =>
-                          TargetLetterItem(
-                        targetLetter: 'B',
-                        targetColor: colorB,
-                      ),
-                    ),
-                  ],
+              const SizedBox(
+                width: 150,
+              ),
+              DragTarget<Color>(
+                onAccept: (data) {
+                  setState(() {
+                    colorB = data;
+                    i++;
+                    if (i == 3) {
+                      if (colorA == letterAColor &&
+                          colorB == letterBColor &&
+                          colorC == letterCColor) {
+                        transitionNavigator(widget: const GameDoneScreen());
+                      } else {
+                        transitionNavigator(widget: const GameFailScreen());
+                      }
+                    }
+                  });
+                },
+                builder: (context, candidateData, rejectedData) =>
+                    TargetLetterItem(
+                  targetLetter: 'B',
+                  targetColor: colorB,
                 ),
               ),
             ],
-          );
+          ),
+        ),
+      ],
+    );
   }
 
+}
+
+void transitionNavigator({required Widget widget}) {
+  Get.to(
+        () => widget,
+    transition: Transition.fade,
+    duration: kGameTransitionDuration,
+  );
 }
 
 class DraggableLetters extends StatelessWidget {
@@ -203,7 +231,6 @@ class DraggableLetters extends StatelessWidget {
     );
   }
 }
-
 
 class DraggableItem extends StatelessWidget {
   const DraggableItem({
@@ -278,4 +305,3 @@ class TargetLetterItem extends StatelessWidget {
     );
   }
 }
-

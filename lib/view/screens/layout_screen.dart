@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:iconly/iconly.dart';
 import 'package:kid_education/view/screens/categories_screen.dart';
-
 import 'package:kid_education/view/screens/profile_screen.dart';
 import 'package:kid_education/view/screens/settings_screen.dart';
 import 'package:kid_education/view/widgets/primary_scaffold_widget.dart';
+import 'package:kid_education/view/widgets/welcome_widget.dart';
 import '../../shared/components/components.dart';
 
 class LayoutScreen extends StatefulWidget {
@@ -16,7 +16,7 @@ class LayoutScreen extends StatefulWidget {
 }
 
 class _LayoutScreenState extends State<LayoutScreen> {
-  int currentIndex = 0;
+  int currentIndex = 1;
   List<IconData> listOfIcons = [
     IconlyLight.profile,
     IconlyLight.home,
@@ -32,7 +32,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     return PrimaryScaffold(
-        appBar: defaultAppBar(context: context,isLeading: true,),
+        appBar: WelcomeWidget.skip?( defaultAppBar(context: context,isLeading: true)):( defaultAppBar(context: context,isLeading: false,)),
         body: screens[currentIndex],
         bottomNavigationBar: Container(
           margin: const EdgeInsets.all(20),

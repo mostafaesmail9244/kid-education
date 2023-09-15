@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kid_education/core/color.dart';
+import 'package:kid_education/core/constant/color.dart';
 import 'package:kid_education/core/constant/space.core.dart';
 import 'package:kid_education/core/helper/get_asset.dart';
 import 'package:kid_education/core/helper/handle_size.dart';

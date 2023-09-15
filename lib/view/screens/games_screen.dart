@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:kid_education/view/screens/first_letter_game_screen.dart';
+import 'package:kid_education/view/screens/layout_screen.dart';
 import 'package:kid_education/view/screens/letters_games_screen.dart';
 import 'package:kid_education/view/widgets/primary_scaffold_widget.dart';
 import '../../shared/components/components.dart';
@@ -14,6 +14,8 @@ class GamesScreen extends StatelessWidget {
     return PrimaryScaffold(
       appBar: defaultAppBar(
         context: context,
+        i: true,
+        widget: const LayoutScreen(),
       ),
       body: SingleChildScrollView(
         child: Column(

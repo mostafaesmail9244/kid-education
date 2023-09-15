@@ -8,14 +8,14 @@ import 'package:kid_education/view/widgets/sliding_text.dart';
 
 import '../../core/constant/constants.dart';
 
-class GameDoneScreen extends StatefulWidget {
-  const GameDoneScreen({super.key});
+class GameFailScreen extends StatefulWidget {
+  const GameFailScreen({super.key});
 
   @override
-  State<GameDoneScreen> createState() => _GameDoneScreenState();
+  State<GameFailScreen> createState() => _GameFailScreenState();
 }
 
-class _GameDoneScreenState extends State<GameDoneScreen>
+class _GameFailScreenState extends State<GameFailScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController animatedController;
   late Animation<Offset> slidingAnimation;
@@ -46,7 +46,7 @@ class _GameDoneScreenState extends State<GameDoneScreen>
             alignment: AlignmentDirectional.bottomCenter,
             children: [
               Image.asset(
-                getPngAsset('gameDone'),
+                getPngAsset('gameFail'),
                 height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width,
                 fit: BoxFit.fill,
@@ -55,8 +55,8 @@ class _GameDoneScreenState extends State<GameDoneScreen>
                 padding: const EdgeInsets.only(bottom: 150.0),
                 child: SlidingText(
                   slidingAnimation: slidingAnimation,
-                  text: 'Great Job',
-                  textColor: greatGobColor,
+                  text: 'Try Again',
+                  textColor: tryAgainColor,
                 ),
               ),
             ],
@@ -82,11 +82,11 @@ class _GameDoneScreenState extends State<GameDoneScreen>
 
   void navigateToLettersGameScreen() {
     Future.delayed(
-        const Duration(
-          seconds: 5,
-        ), () {
+      const Duration(
+        seconds: 5,
+      ), () {
       Get.to(
-        () => const LettersGameScreen(),
+            () => const LettersGameScreen(),
         transition: Transition.fade,
         duration: kTransitionDuration,
       );
