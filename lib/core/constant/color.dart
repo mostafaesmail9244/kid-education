@@ -7,6 +7,7 @@ const Color black = Color(0xFF000000);
 const Color white = Color(0xffffffff);
 const Color greyStork = Color(0xff858585);
 const Color greyText = Color(0xff595959);
+const Color grey = Color(0xff8b8b8b);
 const Color targetLetterAColor = Color(0xFFDF8191);
 const Color targetLetterBColor = Color(0xFFEACD8B);
 const Color targetLetterCColor = Color(0xFF86B0D3);
