@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:kid_education/core/color.dart';
+import 'package:kid_education/core/constant/color.dart';
 
 class DefaultButton extends StatelessWidget {
   final double width;

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kid_education/core/color.dart';
+import 'package:kid_education/core/constant/color.dart';
 
 class MainText extends StatelessWidget {
   final Color? color;

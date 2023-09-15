@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:kid_education/core/color.dart';
+import 'package:kid_education/core/constant/color.dart';
 import 'package:kid_education/core/helper/get_asset.dart';
+import 'package:kid_education/view/screens/letters_games_screen.dart';
+
+import '../../view/screens/games_screen.dart';
 
 Widget defaultButton({
   double width = 380,
@@ -147,6 +150,7 @@ PreferredSizeWidget? defaultAppBar({
   String? title,
   List<Widget>? actions,
   bool isLeading = true,
+  bool i = false,
 }) =>
     AppBar(
       backgroundColor: scaffoldMixedColor,
@@ -154,7 +158,9 @@ PreferredSizeWidget? defaultAppBar({
       leading: isLeading
           ? IconButton(
               onPressed: () {
-                Navigator.pop(context);
+                i
+                    ? navigateTo(context, const GamesScreen())
+                    : Navigator.pop(context);
               },
               icon: Image.asset(
                 getPngAsset(
@@ -165,4 +171,3 @@ PreferredSizeWidget? defaultAppBar({
               ))
           : null,
     );
-

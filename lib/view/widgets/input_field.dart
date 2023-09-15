@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:kid_education/core/constant/radius.core.dart';
 import 'package:kid_education/core/validation.dart';
-import 'package:kid_education/core/color.dart';
+import 'package:kid_education/core/constant/color.dart';
 import 'package:kid_education/view/widgets/txt.widget.dart';
 
 class InputTextField extends StatefulWidget {

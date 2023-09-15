@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:kid_education/core/color.dart';
+import 'package:kid_education/core/constant/color.dart';
 import 'package:kid_education/shared/network/local/cache_helper.dart';
+import 'package:kid_education/test_letter_game.dart';
+import 'package:kid_education/view/screens/game_done_screen.dart';
+import 'package:kid_education/view/screens/layout_screen.dart';
 import 'package:kid_education/view/screens/onBoarding_screen.dart';
+import 'package:kid_education/view/screens/testScreen.dart';
 import 'package:kid_education/view/screens/welcome_screen.dart';
+import 'package:get/get.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,7 +41,7 @@ class MyApp extends StatelessWidget {
       designSize: const Size(375, 811),
       minTextAdapt: true,
       splitScreenMode: true,
-      builder: (context, child) => MaterialApp(
+      builder: (context, child) => GetMaterialApp(
         title: 'Kid Education',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
@@ -44,7 +49,7 @@ class MyApp extends StatelessWidget {
         ),
         home: child,
       ),
-      child: startWidget,
+      child:  const LayoutScreen(),
     );
   }
 }

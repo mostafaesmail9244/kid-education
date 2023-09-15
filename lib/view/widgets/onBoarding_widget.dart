@@ -3,7 +3,7 @@ import 'package:kid_education/view/screens/welcome_screen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../shared/components/components.dart';
-import '../../core/color.dart';
+import '../../core/constant/color.dart';
 import '../../shared/network/local/cache_helper.dart';
 
 class OnBoardingWidget extends StatefulWidget {

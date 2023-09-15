@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kid_education/view/screens/layout_screen.dart';
 import '../../shared/components/components.dart';
-import '../../core/color.dart';
+import '../../core/constant/color.dart';
 import '../screens/hello_kid_screen.dart';
 import '../screens/parent_registration_screen.dart';
 
