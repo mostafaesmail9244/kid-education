@@ -81,9 +81,12 @@ flutter:
   # see https://flutter.dev/custom-fonts/#from-packages
 flutter_native_splash:
   background_image: "assets/splash.png"
-
+  image: "assets/images/logo2.png"
+  android_gravity: center
 
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/images/kiddomix.png"
+  image_path: "assets/images/logo2.png"
+  adaptive_icon_background: "#FFEEF9"
+  adaptive_icon_foreground: "assets/images/logo2.png"

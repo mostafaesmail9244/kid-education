@@ -7,6 +7,8 @@ import 'package:kid_education/view/screens/onBoarding_screen.dart';
 import 'package:kid_education/view/screens/welcome_screen.dart';
 import 'package:get/get.dart';
 
+
+//11678
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await CacheHelper.init();
