@@ -64,7 +64,7 @@ flutter:
  
   assets:
     - assets/images/
-    - assets/images/svg/
+    # - assets/images/svg/
  
   fonts:
     - family: Grandstander

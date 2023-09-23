@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:kid_education/core/helper/get_asset.dart';
 import 'package:kid_education/core/utils/styles.dart';
 
 class MathGame2Screen extends StatefulWidget {
@@ -38,7 +39,7 @@ class _MathGame2ScreenState extends State<MathGame2Screen> {
       body: Stack(
         children: [
           Image.asset(
-            'assets/images/trees1.png',
+            getPngAsset('trees1'),
             width: double.infinity,
             fit: BoxFit.cover,
             height: double.infinity,
